@@ -1,0 +1,3 @@
+INSERT INTO game (id, modality, result, start, finish) VALUES (1, 'Men''s Football', '2x1', '2016-07-12 17:19:36', '2015-12-12 22:11:55');
+INSERT INTO game (id, modality, result, start, finish) VALUES (2, 'Women''s Tennis', '0x6,1x6', '2016-07-19 19:35:43', '2015-12-12 23:01:09');
+INSERT INTO game (id, modality, result, start, finish) VALUES (3, 'Women''s Football', null, '2016-07-17 20:36:30', null);

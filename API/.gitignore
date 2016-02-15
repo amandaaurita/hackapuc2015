@@ -1,0 +1,7 @@
+/vendor/
+/log/*
+!/log/.gitkeep
+composer.lock
+composer.phar
+/conf/propel.json
+/conf/config.php

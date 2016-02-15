@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore" namespace="ApostaAiApi\Models">
+    <table name="system_user" idMethod="native" phpName="User">
+        <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="name" phpName="Name" type="VARCHAR" size="100" required="true"/>
+        <column name="email" phpName="Email" type="VARCHAR" size="256" required="true"/>
+        <column name="password" phpName="Password" type="VARCHAR" size="70" required="true"/>
+        <column name="score" phpName="Score" type="INTEGER" defaultExpr="0"/>
+    </table>
+    <table name="game" idMethod="native" phpName="Game">
+        <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="modality" phpName="Modality" type="VARCHAR" size="256" required="true"/>
+        <column name="result" phpName="Result" type="VARCHAR" size="256"/>
+        <column name="bet_cost" phpName="BetCost" defaultExpr="0" type="INTEGER"/>
+        <column name="start" phpName="Start" type="TIMESTAMP" required="true"/>
+        <column name="finish" phpName="Finish" type="TIMESTAMP"/>
+    </table>
+    <table name="participant" idMethod="native" phpName="Participant">
+        <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="name" phpName="Name" type="VARCHAR" size="100"/>
+        <column name="country_code" phpName="CountryCode" type="VARCHAR" size="10"/>
+        <column name="is_winner" phpName="IsWinner" type="BOOLEAN" defaultValue="false" defaultExpr="false" />
+        <column name="game_id" phpName="GameId" type="INTEGER" required="true"/>
+        <foreign-key foreignTable="game" name="participant_game_id_fkey">
+            <reference local="game_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name="bet" idMethod="native" phpName="Bet">
+        <column name="user_id" phpName="UserId" type="INTEGER" primaryKey="true" required="true"/>
+        <column name="chosen_participant_id" phpName="ChosenParticipantId" type="INTEGER" primaryKey="true" required="true"/>
+        <column name="chosen_result" phpName="ChosenResult" type="VARCHAR" size="256"/>
+        <column name="medal" phpName="Medal" type="ENUM" valueSet="gold, silver, bronze"/>
+        <foreign-key foreignTable="system_user" name="bet_user_id_fkey">
+            <reference local="user_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="participant" name="bet_chosen_participant_id_fkey">
+            <reference local="chosen_participant_id" foreign="id"/>
+        </foreign-key>
+    </table>
+</database>

@@ -1,0 +1,70 @@
+todas as routes comecao com 
+http://139.82.241.39:80/api/(route)
+
+
+no lugar de (route) use as possiveis routes abaixo
+
+=======ROTAS DE USUARIO=======
+
+
+I) ROUTE : ../user
+   METODO : GET
+   PARAMETROS : NENHUM
+   RETORNO : dados do usuario corrente
+   
+I) ROUTE : ../user/rank
+   METODO : GET
+   PARAMETROS : NENHUM
+   RETORNO : lista do ranking do jogo
+
+I) ROUTE : ../user/login
+   METODO : POST
+   PARAMETROS : email(STRING), password(STRING)
+   RETORNO : efetua login do usuario no sistema
+   
+I) ROUTE : ../user/logout
+   METODO : GET
+   PARAMETROS : NENHUM
+   RETORNO : efetua logout do usuario no sistema
+
+
+I) ROUTE : ../user/register
+   METODO : POST
+   PARAMETROS : email(STRING), password(STRING), name(STRING)
+   RETORNO : efetua cadastro do usuario no sistema
+   
+
+=======ROTAS DO JOGO=======
+   
+I) ROUTE : ../game
+   METODO : GET
+   PARAMETROS : NENHUM
+   RETORNO : Listagem de todos os jogos
+   
+I) ROUTE : ../game/{id}
+   METODO : GET
+   PARAMETROS : NENHUM
+   RETORNO : Pega dados de um jogo especifico
+
+I) ROUTE : ../game/{id}/result
+   METODO : POST
+   PARAMETROS : Result(STRING), Winner(INTEGER)
+   RETORNO : Lança o resultado de um jogo no sistema. A api automaticamente atualiza as medalhas de todos os usuarios
+
+=======ROTAS DA APOSTA=======
+
+I) ROUTE : ../bet
+   METODO : POST
+   PARAMETROS : ChosenParticipantId(INTEGER), ChosenResult(STRING)
+   RETORNO : Efetua uma aposta do usuario corrente
+   
+I) ROUTE : ../bet
+   METODO : GET
+   PARAMETROS : NENHUM
+   RETORNO : Pega todas as apostas do usuario corrente
+
+I) ROUTE : ../bet/participant/{pid}
+   METODO : GET
+   PARAMETROS : 
+   RETORNO : Retorna dados de uma aposta que o usuario fez em um participante de um jogo
+ 

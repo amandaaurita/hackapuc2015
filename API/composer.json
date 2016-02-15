@@ -1,0 +1,42 @@
+{
+    "name": "",
+    "description": "Gamificacao da experiencia de assistir as olimpiadas",
+    "keywords": ["aposta","ai", "apostaai"],
+    "homepage": "https://github.com/amandaaurita/hp2015",
+    "license": "",
+    "authors": [
+
+    ],
+    "require": {
+        "slim/slim": "^3.0@beta",
+        "slim/flash": "^0.1.0",
+        "monolog/monolog": "^1.13",
+        "propel/propel": "~2.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "ApostaAiApi\\": "app/src"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "install -b -m 666 /dev/null log/app.log",
+            "generate-config",
+            "composer dump-autoload"
+        ],
+        "build-models": [
+            "php vendor/bin/propel model:build --schema-dir=conf --output-dir=./app/src/"
+        ],
+        "build-schema": [
+            "php vendor/bin/propel reverse --config-dir=conf --output-dir=conf"
+        ],
+        "generate-config": [
+            "php vendor/bin/propel config:convert --config-dir=conf --output-dir=conf"
+        ],
+        "build": [
+            "composer build-models",
+            "composer generate-config",
+            "composer dump-autoload -o"
+        ]
+    }
+}
